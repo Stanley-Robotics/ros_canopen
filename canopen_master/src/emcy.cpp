@@ -52,9 +52,11 @@ void EMCYHandler::recover(){
     has_error_ = false;
 }
 
-void EMCYHandler::read(LayerStatus &status){
+void EMCYHandler::read(LayerStatus &status,const int& node_id){
     if(has_error_){
-        status.error("Node has emergency error");
+        std::stringstream ss;
+        ss<< "Node "<< node_id<< " has emergency error";
+        status.error(ss.str());
     }
 }
 void EMCYHandler::diag(LayerReport &report){

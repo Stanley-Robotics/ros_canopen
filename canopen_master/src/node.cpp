@@ -153,7 +153,7 @@ void Node::handleRead(LayerStatus &status, const LayerState &current_state) {
             status.error("not operational");
         } else{
             pdo_.read(status);
-            emcy_.read(status);
+            emcy_.read(status,node_id_);
         }
     }
 }
