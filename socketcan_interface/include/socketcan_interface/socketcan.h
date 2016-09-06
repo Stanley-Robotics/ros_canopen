@@ -181,6 +181,7 @@ protected:
         boost::asio::write(socket_, boost::asio::buffer(&frame, sizeof(frame)),boost::asio::transfer_all(), ec);
         if(ec){
             LOG("FAILED " << ec);
+            LOG("FAILED message is" << ec.message());
             setErrorCode(ec);
             setNotReady();
             return false;
@@ -201,8 +202,9 @@ protected:
                 input_.is_error = 1;
 
                 LOG("error: " << input_.id);
-                setInternalError(input_.id);
-                setNotReady();
+                LOG("IGNORING THE ERRROR (BY LAURENT ANG GUILLAUME)");
+                //setInternalError(input_.id);
+                //setNotReady();
 
             }else{
                 input_.is_extended = (frame_.can_id & CAN_EFF_FLAG) ? 1 :0;
