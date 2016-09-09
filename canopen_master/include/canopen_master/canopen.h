@@ -148,7 +148,7 @@ public:
     virtual void init();
     virtual void recover();
     virtual void diag(LayerReport &report);
-    virtual void read(LayerStatus &status);
+    virtual void read(LayerStatus &status, const int &node_id);
     const uint8_t error_register();
     EMCYHandler(const boost::shared_ptr<can::CommInterface> interface, const boost::shared_ptr<ObjectStorage> storage);
 };
