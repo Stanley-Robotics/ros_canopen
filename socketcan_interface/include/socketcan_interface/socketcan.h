@@ -190,14 +190,13 @@ protected:
             for(int i=0;i<frame_.can_dlc && i < 8; ++i){
                 input_.data[i] = frame_.data[i];
             }
-            
+
             if(frame_.can_id & CAN_ERR_FLAG){ // error message
                 input_.id = frame_.can_id & CAN_EFF_MASK;
                 input_.is_error = 1;
 
                 LOG("error: " << input_.id);
-                LOG("IGNORING THE ERRROR (BY LAURENT ANG GUILLAUME)");
-                //setInternalError(input_.id);
+                setInternalError(input_.id);
                 //setNotReady();
 
             }else{
